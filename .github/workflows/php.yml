@@ -1,0 +1,21 @@
+name: Mapbender3 Installer
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Prepare enviroument
+      run: | 
+        sudo apt-get install php php-cli openssl bzip2 \
+            php-curl php-gd php-intl php-mbstring \
+            php-zip php-bz2 php-xml php-json \
+            php-sqlite3 php-pgsql php-mysql php-ldap \
+            sqlite3 curl
+    - name: Boostrap
+      run: ./bootstrap
+
